@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WizardChat</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <link rel="icon" href="https://s3-us-west-1.amazonaws.com/wizard-chat-production/Wizard_Chat.png">
+    <%= javascript_include_tag 'application' %>
+    <%= action_cable_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%if current_user %>
+      <script type="text/javascript">
+      window.currentUser = <%= render('api/users/user.json.jbuilder',
+      user: current_user).html_safe %>
+      </script>
+    <% end %>
+  </head>
+
+  <body>
+    <%= yield %>
+  </body>
+</html>
